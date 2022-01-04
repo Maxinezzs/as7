@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>AS7</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/shadow.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div id="div1" class="innershadow1" style="background-color:white;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1" data-left=0 data-top=10 src="https://github.com/Maxinezzs/as7pic/blob/main/1.png?raw=true" style="position:absolute;width:60%;top:25%;left:25%;blur(0px);">
+        
+        <img class="scrollable dropshadow1" data-left=48 data-left2=45 data-top=48 data-top2=48 src="https://github.com/Maxinezzs/as7pic/blob/main/2.png?raw=true" style="position:absolute;width:15%;top:20%;left:25%;">
+      </div>
+      
+      <div id="div2" class="innershadow1" style="background-color:white;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1" data-left=80 data-left2=40 data-top=35 data-top2=55
+             src="https://github.com/Maxinezzs/as7pic/blob/main/3.png?raw=true" style="position:absolute;width:30%;top:55%;left:100%; blur(0px);">  
+        <img class="scrollable dropshadow1" 
+             src="https://github.com/Maxinezzs/as7pic/blob/main/4.png?raw=true" style="position:absolute;width:30%;top:55%;left:30%;">
+          <img class="scrollable dropshadow1" data-left=0 data-left2=30 data-top=35  data-top2=55
+             src="https://github.com/Maxinezzs/as7pic/blob/main/6.png?raw=true" style="position:absolute;width:30%;top:55%;left:0%;">
+      </div>
+      
+      <div id="div3" class="innershadow1" style="background-color:white;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1" data-left=0 data-top=10  src="https://github.com/Maxinezzs/as7pic/blob/main/7.png?raw=true" style="position:absolute;width:50%;top:25%;left:25%;">
+      </div>
+      
+      <div id="div4" class="innershadow1" style="background-color:white;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1" data-left=-10 data-left2=20 data-top=35 data-top2=55
+             src="https://github.com/Maxinezzs/as7pic/blob/main/8.png?raw=true" style="position:absolute;width:50%;top:55%;left:100%;">
+        <img class="scrollable dropshadow1" data-left=80 data-left2=30 data-top=35  data-top2=55
+             src="https://github.com/Maxinezzs/as7pic/blob/main/9.png?raw=true" style="position:absolute;width:50%;top:55%;left:0%;">
+      </div>
+      
+      <div id="div5" class="innershadow1" style="background-color:white;height:200vh;position:relative;">
+        <img class="scrollable dropshadow1"  data-left=80 data-left2=20 data-top=35  data-top2=55
+             src="https://github.com/Maxinezzs/as7pic/blob/main/11.png?raw=true" style="position:absolute;width:50%;top:55%;left:0%;">
+        <img class="scrollable dropshadow1"  data-left=-10 data-left2=30 data-top=35 data-top2=55  src="https://github.com/Maxinezzs/as7pic/blob/main/10.png?raw=true" style="position:absolute;width:50%;top:55%;left:100%;">
+      </div>
+      
+      <div style="background-color:grey;height:100vh"></div>
+</body>
+
+    <script>
+        $(document).ready(function() {
+            var winh = $(window).height();
+            $(window).scroll(function() {
+                var scrolled = $(window).scrollTop();
+                $(".scrollable").each(function() {
+                    var parent_pos = $(this).parent().offset().top;
+                    var next_pos = parent_pos + $(this).parent().height();
+                    var parent_scrolled = scrolled - $(this).parent().offset().top;
+                    if (parent_scrolled > 0 && scrolled < next_pos - winh) {
+
+                        if ($(this).attr("data-left")) {
+                            $(this).css('left', (($(this).data('left2') - $(this).data('left')) * parent_scrolled / winh + $(this).data('left')) + '%');
+                        }
+                        if ($(this).attr("data-top")) {
+                            $(this).css('top', (($(this).data('top2') - $(this).data('top')) * parent_scrolled / winh + $(this).data('top')) + '%');
+                        }
+                        if ($(this).attr("data-width")) {
+                            $(this).css('width', (($(this).data('width2') - $(this).data('width')) * parent_scrolled / winh + $(this).data('width')) + '%');
+                        }
+                    }
+                });
+            });//end of win scroll
+        });
+    </script>
+</body>
+
+</html>
